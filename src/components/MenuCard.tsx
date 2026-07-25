@@ -72,7 +72,7 @@ export default function MenuCard({ burger, index }: { burger: Burger; index: num
             {burger.tag}
           </span>
         )}
-        <span className="absolute -right-2 -top-2 flex h-14 w-14 rotate-6 items-center justify-center rounded-full border-2 border-black bg-red text-center font-display text-xs text-white shadow-[3px_3px_0_0_#0a0a0a]">
+        <span className="absolute right-2 top-2 flex h-12 w-12 rotate-6 items-center justify-center rounded-full border-2 border-black bg-red text-center font-display text-xs text-white shadow-[3px_3px_0_0_#0a0a0a] sm:h-14 sm:w-14">
           {burger.price.toFixed(2)}€
         </span>
       </div>

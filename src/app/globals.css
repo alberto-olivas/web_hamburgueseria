@@ -27,12 +27,15 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--color-white);
   color: var(--color-black);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  touch-action: manipulation;
 }
 
 .font-display {
@@ -52,11 +55,11 @@ body {
 }
 
 .hard-shadow {
-  box-shadow: 7px 7px 0 0 var(--color-black);
+  box-shadow: clamp(4px, 1.6vw, 7px) clamp(4px, 1.6vw, 7px) 0 0 var(--color-black);
 }
 
 .hard-shadow-red {
-  box-shadow: 7px 7px 0 0 var(--color-red);
+  box-shadow: clamp(4px, 1.6vw, 7px) clamp(4px, 1.6vw, 7px) 0 0 var(--color-red);
 }
 
 .stripe-red {
@@ -102,5 +105,10 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    flex-wrap: wrap;
   }
 }

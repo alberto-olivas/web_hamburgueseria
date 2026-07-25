@@ -60,3 +60,6 @@ next-env.d.ts
 /.trae
 /.warp
 /.windsurf
+
+.vercel
+.env*

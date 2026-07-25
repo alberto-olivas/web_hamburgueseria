@@ -52,7 +52,7 @@ export default function Galeria() {
   );
 
   return (
-    <section id="galeria" ref={root} className="relative overflow-hidden bg-black py-24 sm:py-28">
+    <section id="galeria" ref={root} className="relative overflow-hidden bg-black py-16 sm:py-24 lg:py-28">
       <div className="stripe-red pointer-events-none absolute inset-x-0 bottom-0 h-3" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="inline-block rotate-2 border-2 border-white bg-red px-3 py-1 text-sm font-extrabold uppercase tracking-widest text-white">

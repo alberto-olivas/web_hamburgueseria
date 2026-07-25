@@ -41,7 +41,7 @@ export default function Ubicacion() {
   );
 
   return (
-    <section id="ubicacion" ref={root} className="relative overflow-hidden bg-white py-24 text-black sm:py-28">
+    <section id="ubicacion" ref={root} className="relative overflow-hidden bg-white py-16 text-black sm:py-24 lg:py-28">
       <div className="stripe-white-red pointer-events-none absolute inset-x-0 top-0 h-3" />
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="inline-block rotate-2 border-2 border-black bg-red px-3 py-1 text-sm font-extrabold uppercase tracking-widest text-white">

@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Concepto from "@/components/Concepto";
 import Menu from "@/components/Menu";
 import Proceso from "@/components/Proceso";
 import Galeria from "@/components/Galeria";
@@ -14,7 +13,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Concepto />
         <Menu />
         <Proceso />
         <Galeria />

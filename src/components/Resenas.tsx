@@ -106,7 +106,7 @@ export default function Resenas() {
   );
 
   return (
-    <section id="resenas" ref={root} className="bg-off-white py-24 sm:py-28">
+    <section id="resenas" ref={root} className="bg-off-white py-16 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <span className="inline-block -rotate-2 border-2 border-black bg-white px-3 py-1 text-sm font-extrabold uppercase tracking-widest text-black">
           Lo que dicen

@@ -94,7 +94,7 @@ export default function Proceso() {
   );
 
   return (
-    <section id="proceso" ref={root} className="relative overflow-hidden bg-white py-24 text-black sm:py-28">
+    <section id="proceso" ref={root} className="relative overflow-hidden bg-white py-16 text-black sm:py-24 lg:py-28">
       <span className="inline-block -rotate-2 border-2 border-black bg-white px-3 py-1 text-sm font-extrabold uppercase tracking-widest text-red ml-5 sm:ml-8">
         De la plancha a la mesa
       </span>

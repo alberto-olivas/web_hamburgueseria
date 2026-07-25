@@ -111,7 +111,7 @@ export default function Hero() {
             Smash desde 2019 <span className="text-red">·</span> Sin negociar
           </span>
 
-          <h1 className="font-display mt-6 text-[16vw] leading-[0.82] text-black sm:text-8xl lg:text-[6rem]">
+          <h1 className="font-display mt-6 text-[clamp(2.75rem,16vw,5rem)] leading-[0.82] text-black sm:text-8xl lg:text-[6rem]">
             <span className="hero-title-line block">SMASH-</span>
             <span className="hero-title-line text-outline-black block -ml-1 sm:-ml-2">EADAS,</span>
             <span className="hero-title-line block -rotate-1 text-red">NO NEGOCIABLES.</span>
