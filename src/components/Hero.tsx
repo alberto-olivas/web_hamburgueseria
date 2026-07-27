@@ -4,7 +4,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import BurgerVideoFloat from "@/components/BurgerVideoFloat";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +17,8 @@ const TICKER_ITEMS = [
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const imgWrap = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useGSAP(
     () => {
@@ -42,10 +43,28 @@ export default function Hero() {
           },
           "-=0.2"
         )
+        .fromTo(
+          imgWrap.current,
+          { scale: 0.8, opacity: 0, rotate: -6, skewX: 4 },
+          {
+            scale: 1,
+            opacity: 1,
+            rotate: -3,
+            skewX: 0,
+            duration: 0.7,
+            ease: "back.out(1.7)",
+          },
+          "-=0.4"
+        )
         .from(
           ".hero-cta",
           { y: 20, opacity: 0, duration: 0.4, stagger: 0.08, ease: "power3.out" },
-          "-=0.2"
+          "-=0.3"
+        )
+        .from(
+          ".hero-sticker",
+          { scale: 0, opacity: 0, rotate: -25, duration: 0.5, stagger: 0.1, ease: "back.out(2.4)" },
+          "-=0.25"
         );
 
       gsap.to(".hero-diagonal", {
@@ -58,6 +77,27 @@ export default function Hero() {
           scrub: 0.4,
         },
       });
+
+      const video = videoRef.current;
+      if (video) {
+        const setup = () => {
+          const duration = video.duration;
+          if (!duration || Number.isNaN(duration)) return;
+
+          ScrollTrigger.create({
+            trigger: document.documentElement,
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 0.5,
+            onUpdate: (self) => {
+              video.currentTime = self.progress * duration;
+            },
+          });
+        };
+
+        if (video.readyState >= 1) setup();
+        else video.addEventListener("loadedmetadata", setup, { once: true });
+      }
     },
     { scope: root }
   );
@@ -76,7 +116,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.5)_35%,transparent_60%)]" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-3xl px-5 sm:px-8">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-6">
         <div className="relative z-10">
           <span className="hero-badge inline-flex -rotate-3 items-center gap-2 border-2 border-black bg-white px-4 py-1.5 text-xs font-extrabold uppercase tracking-widest text-black">
             Smash desde 2019 <span className="text-red">·</span> Sin negociar
@@ -123,7 +163,26 @@ export default function Hero() {
           </div>
         </div>
 
-        <BurgerVideoFloat />
+        <div className="relative z-10 mx-auto w-full max-w-md lg:max-w-none lg:fixed lg:right-8 lg:top-1/2 lg:w-[26rem] lg:max-w-none lg:-translate-y-1/2">
+          <div ref={imgWrap} className="relative aspect-square w-full">
+            <div className="absolute inset-4 border-4 border-black bg-white" />
+            <video
+              ref={videoRef}
+              src="/videos/burger-scroll.mp4"
+              muted
+              playsInline
+              preload="auto"
+              className="relative h-full w-full border-4 border-black object-cover"
+            />
+          </div>
+
+          <div className="hero-sticker absolute -left-6 top-2 flex h-24 w-24 -rotate-12 items-center justify-center rounded-full border-2 border-black bg-red text-center font-display text-[0.7rem] leading-tight text-white shadow-[4px_4px_0_0_#0a0a0a] sm:h-28 sm:w-28 sm:text-xs">
+            100% CARNE FRESCA
+          </div>
+          <div className="hero-sticker absolute -right-4 bottom-6 flex h-28 w-28 rotate-12 items-center justify-center rounded-full border-2 border-black bg-white text-center font-display text-xs leading-tight text-black shadow-[4px_4px_0_0_#d6141f] sm:h-32 sm:w-32">
+            HECHA AL MOMENTO
+          </div>
+        </div>
       </div>
     </section>
   );
