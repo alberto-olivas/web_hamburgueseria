@@ -80,9 +80,13 @@ export default function Hero() {
 
       const video = videoRef.current;
       if (video) {
+        const START_TIME = 0.5;
+
         const setup = () => {
           const duration = video.duration;
           if (!duration || Number.isNaN(duration)) return;
+
+          video.currentTime = START_TIME;
 
           ScrollTrigger.create({
             trigger: document.documentElement,
@@ -90,7 +94,7 @@ export default function Hero() {
             end: "bottom bottom",
             scrub: 0.5,
             onUpdate: (self) => {
-              video.currentTime = self.progress * duration;
+              video.currentTime = START_TIME + self.progress * (duration - START_TIME);
             },
           });
         };
